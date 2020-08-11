@@ -9,20 +9,17 @@ extends AnimatedSprite
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	play();
-	set_position(Vector2(100,500))	
+	play();	
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	if Input.is_key_pressed(KEY_RIGHT):
-		position += Vector2(150 * delta,0) 
+	if Input.is_action_pressed("ui_right"):
 		self.flip_h = false
-	if Input.is_key_pressed(KEY_LEFT):
-		position += Vector2(-150 * delta,0)
+	if Input.is_action_pressed("ui_left"):
 		self.flip_h = true
-	if((!Input.is_key_pressed(KEY_LEFT) && !Input.is_key_pressed(KEY_RIGHT)) || (Input.is_key_pressed(KEY_LEFT) && Input.is_key_pressed(KEY_RIGHT))):
+	if((!Input.is_action_pressed("ui_right") && !Input.is_action_pressed("ui_left")) || (Input.is_action_pressed("ui_right") && Input.is_action_pressed("ui_left"))):
 		set_animation('idle')
 	else:
 		set_animation('walk')
