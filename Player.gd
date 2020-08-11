@@ -22,7 +22,7 @@ func _process(delta):
 	if Input.is_key_pressed(KEY_LEFT):
 		position += Vector2(-150 * delta,0)
 		self.flip_h = true
-	if(!Input.is_key_pressed(KEY_LEFT) && !Input.is_key_pressed(KEY_RIGHT)):
+	if((!Input.is_key_pressed(KEY_LEFT) && !Input.is_key_pressed(KEY_RIGHT)) || (Input.is_key_pressed(KEY_LEFT) && Input.is_key_pressed(KEY_RIGHT))):
 		set_animation('idle')
 	else:
 		set_animation('walk')
